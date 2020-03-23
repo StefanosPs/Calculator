@@ -1,0 +1,14 @@
+.toast{
+	&.fade:not(.show){
+		display:none;
+	}
+	&-warning{
+		.toast-header{
+			@extend .alert-warning;
+			color: $toast-header-color;
+		}
+		.toast-body{
+			@extend .alert-warning;
+		}
+	}
+}
