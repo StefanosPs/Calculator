@@ -1,4 +1,13 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Calculator
+
+This project is a simple calculator just for fun.
+
+## TODO List
+    - [] Add testers
+    - [] Add Square Root calculation
+    - [] Configure as  Progressive Web App [PWA](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+
+<!-- 
 
 ## Available Scripts
 
@@ -66,3 +75,4 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `yarn build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+ -->
