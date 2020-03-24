@@ -3,8 +3,9 @@
 This project is a simple calculator just for fun.
 
 ## TODO List
+    - [X] Add Square Root calculation
     - [] Add testers
-    - [] Add Square Root calculation
+    - [] Update History
     - [] Configure as  Progressive Web App [PWA](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
 <!-- 
