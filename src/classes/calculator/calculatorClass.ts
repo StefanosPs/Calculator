@@ -126,6 +126,8 @@ class Calculator {
 	private history: Array<Array<string>>;
 	private mathExp: Array<string> = [];
 
+	private expectedCloseParenthesis: number =  0 ;
+
 	constructor() {
 		this.history = [];
 		this.mathExp = [];
@@ -134,7 +136,7 @@ class Calculator {
 	/**
 	 * getAlgebraicExpression
 	 */
-	public getAlgebraicExpression() {
+	public getAlgebraicExpression() : string {
 		let retStr: string = "";
 		this.mathExp.forEach(element => {
 			if (mathOperationObj[element]) {
@@ -144,172 +146,214 @@ class Calculator {
 			} else
 				retStr += element;
 		});
-
+		
 		return retStr;
 	}
 
 	/**
-	 * pushPathExp
+	 * pushItem
 	 */
-	public pushItem(item: string) {
+	public pushItem(item: string): boolean {
 		//TODO Add validation with push
 		let addItem = false;
-		let appendItem = false; 
+		let appendItem = false;
 
-		let isItemNumFlag : boolean = false;
-		let isMathOperation  : boolean = false;
+		let isItemNumFlag: boolean = false;
+		let isMathOperation: boolean = false;
 
-	
-
-		if( mathOperationObj[item] ) {
-
+		if (mathOperationObj[item]) {
 			isMathOperation = true;
-		}else{
-			isItemNumFlag = true; 			
+		} else if (numbersKeysArray.indexOf(item) !== -1 || Number(item)) {
+			isItemNumFlag = true;
+		} else {
+			throw new Error(`No valid item ${item}`);
 		}
 
-		
-
-		if(this.mathExp.length === 0){
+		if (this.mathExp.length === 0) {
 			//the first cal can be square, open parenthesis number
-			if( isItemNumFlag ){
+			if (isItemNumFlag) {
 				addItem = true;
-			}else if( item === "squareRoot" || item === "openParenthesis" || item === "minus"  ){
+			} else if (item === "squareRoot" || item === "openParenthesis" || item === "minus" || item === "plus") {
 				addItem = true;
-			}else{
-				throw new Error(`The first char can be Number or Square Root or Open Parenthesis `); 
+			} else {
+				throw new Error(`The first char can be Number or Square Root or Open Parenthesis `);
 			}
-		}else{
-			let lastItem = this.mathExp[ ( this.mathExp.length - 1 ) ];
+		} else {
+			let lastItem = this.mathExp[(this.mathExp.length - 1)];
 
-			let isLastItemNumFlag : boolean = false;
-			let isLastMathOperation  : boolean = false; 
-			if( mathOperationObj[lastItem] ) {
-
+			let isLastItemNumFlag: boolean = false;
+			let isLastMathOperation: boolean = false;
+			if (mathOperationObj[lastItem]) {
 				isLastMathOperation = true;
-			}else{
-				isLastItemNumFlag = true; 			
+			} else if (numbersKeysArray.indexOf(lastItem) !== -1 || Number(lastItem)) {
+				isLastItemNumFlag = true;
+			} else {
+				throw new Error(`No valid item ${item}`);
 			}
 
-			if(isItemNumFlag && isLastItemNumFlag ){
+			if (isItemNumFlag && isLastItemNumFlag) {
 				//number before number 
-				if(item === "." ){ 
-					if(lastItem.indexOf(".")===-1){
+				if (item === ".") {
+					if (lastItem.indexOf(".") === -1) {
 						appendItem = true;
-					}else{
+					} else {
 						throw new Error(`'.' already exists`);
-					} 
-				}else{
+					}
+				} else {
 					appendItem = true;
 				}
-			}else if( isMathOperation && isLastItemNumFlag ){
+			} else if (isMathOperation && isLastItemNumFlag) {
 				//number before Operation
-				if(
-					 item === "plus" || 
-					 item === "squared" ||
-					 item === "minus" ||
-					 item === "closeParenthesis" ||
-					 item === "multiplication" ||
-					 item === "divide" 
-					   ){
-					//TODO Add close parenthesis to an else if with check
+				if (
+					item === "plus" ||
+					item === "minus" ||
+					item === "squared" ||
+					item === "closeParenthesis" ||
+					item === "multiplication" ||
+					item === "divide"
+				) {
 					addItem = true;
-				}else{
-					throw new Error(`Can not add operation ${ mathOperationObj[item]['title']}`);
+				} else if (
+					item === "openParenthesis" ||
+					item === "squareRoot"
+				) {
+					this.pushItem('multiplication');
+					addItem = true;
+				} else {
+					throw new Error(`Can not add operation ${mathOperationObj[item]['title']}`);
 				}
-				     
-			}else if( isMathOperation && isLastMathOperation ){
+
+			} else if (isMathOperation && isLastMathOperation) { 
 				//Operation before Operation
-				if(item ==='openParenthesis'){
+				if (item === 'openParenthesis' ||
+					item === "squareRoot") {
+					if(lastItem === "closeParenthesis" || lastItem === "squared"){
+						this.pushItem('multiplication');
+					}
+					addItem = true;
+
+				} else if(
+					['divide', 'multiplication' , 'minus' , 'plus' ].indexOf(lastItem)>-1 &&
+					['divide', 'multiplication' , 'minus' , 'plus' ].indexOf(item)>-1
+				){
+					if('multiplication' === item && item ===lastItem  ){
+						item = 'squared';
+					}
+					this._updateHistory();
+					this.mathExp[(this.mathExp.length - 1)] = item;
+					return true;
+				}else {
 					addItem = true;
 				}
 
-			}else if(isItemNumFlag  && isLastMathOperation ){
-				//Operation before number
-				addItem = true;
-			} 
+			} else if (isItemNumFlag && isLastMathOperation) {
+				//Operation before number 
+				if(['divide', 'multiplication' , 'minus' , 'plus','openParenthesis' ].indexOf(lastItem)>-1){
+					addItem = true;
+				}else{
+					this.pushItem('multiplication');
+					addItem = true;
+				}
+			}
 		}
 		
 
-		if(addItem){
-			this.updateHistory();
+
+		if (addItem) {
+			this._updateHistory();
 			this.mathExp.push(item);
-			return true;
-		}else if(appendItem){
-			this.updateHistory();
-			this.mathExp[ ( this.mathExp.length - 1 ) ] += item; 
-			return true;
-		}else{
-			if(mathOperationObj[item]){
+			
+		} else if (appendItem) {
+			this._updateHistory();
+			this.mathExp[(this.mathExp.length - 1)] += item; 
+		} else {
+			if (mathOperationObj[item]) {
 				throw new Error(`Failed to Push '${mathOperationObj[item]['title']}'`);
-			}else{
+			} else {
 				throw new Error(`Failed to Push ${item}`);
 			}
 
 		}
+		if(	item === "squareRoot" ){
+			this.pushItem('openParenthesis');
+		} 
+		
+		if(item === "openParenthesis"){
+			this.expectedCloseParenthesis++;
+		}else if(item === "closeParenthesis"){
+			this.expectedCloseParenthesis--;
+		}
+
+		return true;
 	}
 
 	public reset() {
-		this.updateHistory();
+		this._updateHistory();
 		this.mathExp = [];
 	}
 
 	public undo() {
 		if (this.history.length > 0) {
 			this.mathExp = this.history.pop()!;
-		}else if(this.history.length === 0){
+		} else if (this.history.length === 0) {
 			this.mathExp = [];
 		}
 	}
 
 	public calculate() {
 
-
+		for (let index = 0; index < this.expectedCloseParenthesis; index++) {
+			// retStr += `<span style="opacity: .9">)</span>`;
+			this.pushItem('closeParenthesis');
+		} 
 		let mathFn = '';
-		this.mathExp.forEach(element => {
+		for (let index = 0; index < this.mathExp.length; index++) {
+			const element = this.mathExp[index];
 			if (mathOperationObj[element]) {
 				let tmp = mathOperationObj[element] as mathOperationInt;
-				if (tmp['mathExp'] === 'Math.sqrt') {
+				mathFn += tmp['mathExp'];
+				// if (tmp['mathExp'] === 'Math.sqrt') {
 
-				} else {
-					mathFn += tmp['mathExp'];
-				}
+				// } else {
+				// 	mathFn += tmp['mathExp'];
+				// }
 			} else {
 				mathFn += element;
 			}
-		});
+		}
+		
 
 		let result = 0;
-		try { 
+		try {
 			result = eval(mathFn);
-			this.updateHistory();
+			this._updateHistory();
 			this.mathExp = [result.toString()];
 		} catch (error) {
+			console.log(`mathFn ${mathFn} `)
 			console.error(error);
 			return '0';
 		}
-		if(Infinity === result){
-			throw new Error("");
-		}else{
-			return this.getNum(result);
-		}
+
+		return this._getNum(result);
 
 		// return '0';
 
 	}
 
-	private getNum(num:number){ 
-		if(num === Infinity){
+	private _getNum(num: number) {
+		if (num === Infinity) {
 			throw new Error("Too large number");
-		} 
+		}else if(isNaN(num)){
+			throw new Error("Fail to exec function");
+		}
 
-		num = Number(Math.round(Number(num+'e9'))+'e-9'); 
+		num = Number(Math.round(Number(num + 'e9')) + 'e-9');
 		return num.toString();
 	}
 	/**
 	 * updateHistory
 	 */
-	private updateHistory() {
+	private _updateHistory() {
 		if (this.mathExp.length > 0) {
 			this.history.push([...this.mathExp]);
 		}
