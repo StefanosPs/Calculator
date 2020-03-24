@@ -163,7 +163,7 @@ class Calculator {
 
 		if (mathOperationObj[item]) {
 			isMathOperation = true;
-		} else if (numbersKeysArray.indexOf(item) !== -1 || Number(item)) {
+		} else if (numbersKeysArray.indexOf(item) !== -1 || !(isNaN(Number(item) )) ) {
 			isItemNumFlag = true;
 		} else {
 			throw new Error(`No valid item ${item}`);
@@ -185,7 +185,7 @@ class Calculator {
 			let isLastMathOperation: boolean = false;
 			if (mathOperationObj[lastItem]) {
 				isLastMathOperation = true;
-			} else if (numbersKeysArray.indexOf(lastItem) !== -1 || Number(lastItem)) {
+			} else if (numbersKeysArray.indexOf(lastItem) !== -1 || !(isNaN(Number(lastItem) )) ) {
 				isLastItemNumFlag = true;
 			} else {
 				throw new Error(`No valid item ${item}`);
@@ -312,17 +312,11 @@ class Calculator {
 			if (mathOperationObj[element]) {
 				let tmp = mathOperationObj[element] as mathOperationInt;
 				mathFn += tmp['mathExp'];
-				// if (tmp['mathExp'] === 'Math.sqrt') {
-
-				// } else {
-				// 	mathFn += tmp['mathExp'];
-				// }
 			} else {
 				mathFn += element;
 			}
 		}
 		
-
 		let result = 0;
 		try {
 			result = eval(mathFn);
