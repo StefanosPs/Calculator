@@ -289,13 +289,28 @@ class Calculator {
 			return '0';
 		}
 		if(Infinity === result){
-			throw new Error("Too large number");
+			throw new Error("");
 		}else{
-			return result.toString();
+			return this.getNum(result);
 		}
 
 		// return '0';
 
+	}
+
+	private getNum(num:number){ 
+		if(num === Infinity){
+			throw new Error("Too large number");
+		}
+		// if(Number.MAX_VALUE < num  ){
+		// 	
+		// }else if(Number.MIN_VALUE > num){
+		// 	throw new Error("Too small number");
+		// }
+
+		num = Number(Math.round(Number(num+'e9'))+'e-9');
+		// num = (num - num % Math.pow(10,-9)); 
+		return num.toString();
 	}
 	/**
 	 * updateHistory
