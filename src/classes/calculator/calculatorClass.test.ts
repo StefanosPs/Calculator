@@ -1,12 +1,6 @@
-import React from 'react';
-import { render } from '@testing-library/react';
 import { calculator } from './calculatorClass.ts';
 
-// test('renders learn react link', () => {
-//   const { getByText } = render(<App />);
-//   const linkElement = getByText(/learn react/i);
-//   expect(linkElement).toBeInTheDocument();
-// }); 
+
 describe('Add', () => {
     test('2+2=4', () => {
         expect(calculator.pushItem("2")).toBe(true)
