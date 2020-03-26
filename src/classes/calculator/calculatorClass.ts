@@ -1,13 +1,21 @@
+enum OperationType {
+	mathOperation, 
+	mathCallFn,
+	calcCallFn 
+}
+
 interface mathOperationInt {
+	type: OperationType,
 	icon: string,
 	title: string,
-	mathExp: string,
-	mathExpStr: string,
 	desc: string,
+	variant: string,
 	keyDown: string[],
-	variant: string
+	mathExp: string,
+	mathExpStr: string
 }
 interface mathFunctionInt {
+	type: OperationType,
 	icon: string,
 	title: string,
 	desc: string,
@@ -24,6 +32,7 @@ export const numbersKeysArray = ["7", "8", "9", "4", "5", "6", "1", "2", "3", "0
 
 export const mathOperationObj: mathOperationType = {
 	divide: {
+		type: OperationType.mathOperation,
 		icon: "",
 		title: "/",
 		mathExp: "/",
@@ -32,23 +41,8 @@ export const mathOperationObj: mathOperationType = {
 		desc: "Divide",
 		variant: `outline-{theme.color}`
 	},
-	undo: {
-		icon: "",
-		title: "\u21B6",
-		desc: "Undo",
-		keyDown: ["Backspace"],
-		variant: `outline-{theme.color}`,
-		onClick: 'undo'
-	},
-	clearDisplay: {
-		icon: "",
-		title: "C",
-		desc: "Clear Display",
-		keyDown: ["Delete"],
-		variant: `outline-{theme.color}`,
-		onClick: 'reset'
-	},
 	multiplication: {
+		type: OperationType.mathOperation,
 		icon: "",
 		title: "X",
 		mathExp: "*",
@@ -57,7 +51,29 @@ export const mathOperationObj: mathOperationType = {
 		desc: "Μultiplication",
 		variant: `outline-{theme.color}`
 	},
+	minus: {
+		type: OperationType.mathOperation,
+		icon: "",
+		title: "-",
+		mathExp: "-",
+		mathExpStr: "-",
+		keyDown: ["-"],
+		desc: "Minus,",
+		variant: `outline-{theme.color}`
+	},
+
+	plus: {
+		type: OperationType.mathOperation,
+		icon: "",
+		title: "\u002B",
+		mathExp: "+",
+		mathExpStr: "+",
+		keyDown: ["+"],
+		desc: "Add",
+		variant: `outline-{theme.color}`
+	},
 	openParenthesis: {
+		type: OperationType.mathCallFn,
 		icon: "",
 		title: "(",
 		mathExp: "(",
@@ -67,6 +83,7 @@ export const mathOperationObj: mathOperationType = {
 		variant: `outline-{theme.color}`
 	},
 	closeParenthesis: {
+		type: OperationType.mathCallFn,
 		icon: "",
 		title: ")",
 		mathExp: ")",
@@ -75,16 +92,8 @@ export const mathOperationObj: mathOperationType = {
 		desc: "Close Parenthesis",
 		variant: `outline-{theme.color}`
 	},
-	minus: {
-		icon: "",
-		title: "-",
-		mathExp: "-",
-		mathExpStr: "-",
-		keyDown: ["-"],
-		desc: "Minus,",
-		variant: `outline-{theme.color}`
-	},
 	squared: {
+		type: OperationType.mathCallFn,
 		icon: "",
 		title: "x\u00B2",
 		mathExp: "**2",
@@ -94,6 +103,7 @@ export const mathOperationObj: mathOperationType = {
 		variant: `outline-{theme.color}`
 	},
 	squareRoot: {
+		type: OperationType.mathCallFn,
 		icon: "",
 		title: "\u221Ax",
 		mathExp: "Math.sqrt",
@@ -102,16 +112,26 @@ export const mathOperationObj: mathOperationType = {
 		keyDown: [""],
 		variant: `outline-{theme.color}`
 	},
-	plus: {
+	undo: {
+		type: OperationType.calcCallFn,
 		icon: "",
-		title: "\u002B",
-		mathExp: "+",
-		mathExpStr: "+",
-		keyDown: ["+"],
-		desc: "Add",
-		variant: `outline-{theme.color}`
+		title: "\u21B6",
+		desc: "Undo",
+		keyDown: ["Backspace"],
+		variant: `outline-{theme.color}`,
+		onClick: 'undo'
+	},
+	clearDisplay: {
+		type: OperationType.calcCallFn,
+		icon: "",
+		title: "C",
+		desc: "Clear Display",
+		keyDown: ["Delete"],
+		variant: `outline-{theme.color}`,
+		onClick: 'reset'
 	},
 	result: {
+		type: OperationType.calcCallFn,
 		icon: "",
 		title: "\u003D",
 		desc: "Calculate",
@@ -183,6 +203,7 @@ class Calculator {
 
 			let isLastItemNumFlag: boolean = false;
 			let isLastMathOperation: boolean = false;
+
 			if (mathOperationObj[lastItem]) {
 				isLastMathOperation = true;
 			} else if (numbersKeysArray.indexOf(lastItem) !== -1 || !(isNaN(Number(lastItem) )) ) {
@@ -205,12 +226,9 @@ class Calculator {
 			} else if (isMathOperation && isLastItemNumFlag) {
 				//number before Operation
 				if (
-					item === "plus" ||
-					item === "minus" ||
+					mathOperationObj[item].type === OperationType.mathOperation || 
 					item === "squared" ||
-					item === "closeParenthesis" ||
-					item === "multiplication" ||
-					item === "divide"
+					item === "closeParenthesis" 
 				) {
 					addItem = true;
 				} else if (
@@ -233,10 +251,11 @@ class Calculator {
 					addItem = true;
 
 				} else if(
-					['divide', 'multiplication' , 'minus' , 'plus' ].indexOf(lastItem)>-1 &&
-					['divide', 'multiplication' , 'minus' , 'plus' ].indexOf(item)>-1
+					mathOperationObj[lastItem].type === OperationType.mathOperation &&
+					mathOperationObj[item].type === OperationType.mathOperation
 				){
 					if('multiplication' === item && item ===lastItem  ){
+						// ** to ^2 
 						item = 'squared';
 					}
 					this._updateHistory();
@@ -248,10 +267,11 @@ class Calculator {
 
 			} else if (isItemNumFlag && isLastMathOperation) {
 				//Operation before number 
-				if(['divide', 'multiplication' , 'minus' , 'plus','openParenthesis' ].indexOf(lastItem)>-1){
-					addItem = true;
+				if( ['closeParenthesis' ].indexOf(lastItem)>-1){
+						this.pushItem('multiplication');
+						addItem = true;
+
 				}else{
-					this.pushItem('multiplication');
 					addItem = true;
 				}
 			}
@@ -287,12 +307,12 @@ class Calculator {
 		return true;
 	}
 
-	public reset() {
+	public reset() : void{
 		this._updateHistory();
 		this.mathExp = [];
 	}
 
-	public undo() {
+	public undo() : void {
 		if (this.history.length > 0) {
 			this.mathExp = this.history.pop()!;
 		} else if (this.history.length === 0) {
@@ -300,7 +320,7 @@ class Calculator {
 		}
 	}
 
-	public calculate() {
+	public calculate() : string {
 
 		for (let index = 0; index < this.expectedCloseParenthesis; index++) {
 			// retStr += `<span style="opacity: .9">)</span>`;
@@ -334,7 +354,7 @@ class Calculator {
 
 	}
 
-	private _getNum(num: number) {
+	private _getNum(num: number) : string{
 		if (num === Infinity) {
 			throw new Error("Too large number");
 		}else if(isNaN(num)){
