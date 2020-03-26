@@ -1,4 +1,4 @@
-enum OperationType {
+export enum OperationType {
 	mathOperation, 
 	mathCallFn,
 	calcCallFn 
@@ -189,6 +189,10 @@ class Calculator {
 			throw new Error(`No valid item ${item}`);
 		}
 
+		if(item === "closeParenthesis" && this.expectedCloseParenthesis<1){
+			throw new Error(`Failed to Push '${mathOperationObj[item]['title']}' without '${mathOperationObj['openParenthesis']['title']}' exists`);
+		}
+		
 		if (this.mathExp.length === 0) {
 			//the first cal can be square, open parenthesis number
 			if (isItemNumFlag) {
@@ -261,13 +265,24 @@ class Calculator {
 					this._updateHistory();
 					this.mathExp[(this.mathExp.length - 1)] = item;
 					return true;
+				}else if(
+					item === "squared" 
+				){
+					if( ['closeParenthesis'].indexOf(lastItem)!==-1 ){
+						addItem = true;
+					}else{
+						throw new Error(`Failed to Push ${item}`);
+					}
+
+				}else if(lastItem === 'openParenthesis' && ['divide' ].indexOf(item)>-1){
+
 				}else {
 					addItem = true;
 				}
 
 			} else if (isItemNumFlag && isLastMathOperation) {
 				//Operation before number 
-				if( ['closeParenthesis' ].indexOf(lastItem)>-1){
+				if( ['closeParenthesis', 'squared' ].indexOf(lastItem)>-1){
 						this.pushItem('multiplication');
 						addItem = true;
 
@@ -310,6 +325,7 @@ class Calculator {
 	public reset() : void{
 		this._updateHistory();
 		this.mathExp = [];
+		this.expectedCloseParenthesis = 0;
 	}
 
 	public undo() : void {
