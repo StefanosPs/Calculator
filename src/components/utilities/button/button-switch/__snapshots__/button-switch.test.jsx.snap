@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders  ButtonSwitch 1`] = `
+<div
+  className="switch float-none"
+>
+  <h6 />
+  <label
+    className="switch-label"
+  >
+    <input
+      type="checkbox"
+    />
+    <span
+      className="slider round"
+    />
+  </label>
+</div>
+`;
