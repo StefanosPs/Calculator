@@ -5,7 +5,9 @@ import ToastWarning from "../utilities/toast/warning/toast-warning";
 
 import {
   numbersKeysArray,
-  mathOperationObj,
+  mathOperationObj
+} from "../../classes/calculator/calculatorConstants";
+import {
   calculator
 } from "../../classes/calculator/calculatorClass";
 

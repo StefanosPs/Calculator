@@ -1,4 +1,10 @@
-import { calculator, numbersKeysArray, mathOperationObj , OperationType} from './calculatorClass.ts';
+import { calculator } from './calculatorClass.ts';
+
+import {
+    numbersKeysArray,
+    mathOperationObj,
+    OperationType
+  } from "./calculatorConstants.ts";
 
 const mathOperationArray = Object.keys(mathOperationObj).filter(el => { return (mathOperationObj[el].type !== OperationType.calcCallFn) ; } );
 

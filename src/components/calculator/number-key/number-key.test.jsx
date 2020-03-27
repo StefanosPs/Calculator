@@ -2,8 +2,8 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 
 import {
-    numbersKeysArray
-  } from "../../../classes/calculator/calculatorClass";
+  numbersKeysArray
+} from "../../../classes/calculator/calculatorConstants";
 
 import NumberKey from './number-key';
 

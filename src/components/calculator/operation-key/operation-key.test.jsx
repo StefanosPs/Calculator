@@ -1,9 +1,10 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
+
 import {
-    mathOperationObj
-  } from "../../../classes/calculator/calculatorClass";
+  mathOperationObj
+} from "../../../classes/calculator/calculatorConstants";
 
 import OperationKey from './operation-key';
 
