@@ -1,9 +1,8 @@
 import { ThemesActionTypes } from "./theme.types";
-// import { THEMES } from "../../data/theme";
-
-const THEMES = process.env.REACT_APP_BOOTSTRAP_THEMES;
+ import { THEME } from "./theme.constants";
+ 
 const INITIAL_THEME = {
-  currentTheme: THEMES.dark 
+  currentTheme: THEME.dark 
 };
 
 const themeReducer = (state = INITIAL_THEME, action) => { 
@@ -11,9 +10,9 @@ const themeReducer = (state = INITIAL_THEME, action) => {
     case ThemesActionTypes.TOOGLE_THEME:
       switch (action.payload) {
         case "dark":
-          return { currentTheme: THEMES.dark };
+          return { currentTheme: THEME.dark };
         case "light":
-          return { currentTheme:  THEMES.light };
+          return { currentTheme:  THEME.light };
         default:
           return INITIAL_THEME;
 
