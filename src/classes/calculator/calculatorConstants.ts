@@ -4,7 +4,7 @@ export enum OperationType {
 	calcCallFn 
 }
 
-interface mathOperationInt {
+export interface mathOperationInt {
 	type: OperationType,
 	icon: string,
 	title: string,
@@ -14,7 +14,7 @@ interface mathOperationInt {
 	mathExp: string,
 	mathExpStr: string
 }
-interface mathFunctionInt {
+export interface mathFunctionInt {
 	type: OperationType,
 	icon: string,
 	title: string,
