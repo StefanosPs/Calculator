@@ -1,10 +1,26 @@
 import React from "react";
-import { Container, Row, Col, Tooltip, OverlayTrigger } from "react-bootstrap";
+import { Container, Row, Col, Tooltip, OverlayTrigger, Alert } from "react-bootstrap";
 
 import Button from "../../utilities/button/button";
 
 const OperationKey = ({theme, onClick, mathOperationObj, ...otherProps}) => {
     //console.dir(mathOperationObj);
+  theme = (theme && typeof theme === 'object')?theme:{ color: "dark", text: "text-white" } ;
+  if(typeof onClick !== 'function'){
+    onClick = (arg)=>{console.log(arg0, arg1 )}
+  }
+  if( typeof mathOperationObj !== 'object' ){ 
+    return (
+      <Container {...otherProps}>
+            <Row className="justify-content-center">
+            <Col><Alert variant="danger">
+            Prop mathOperationObj must be an object
+          </Alert></Col>
+            </Row>
+      </Container>
+    );
+  }
+  
   const actionsStr = Object.keys(mathOperationObj).map(id => {
     let columnSize = 4;
     let el = mathOperationObj[id];

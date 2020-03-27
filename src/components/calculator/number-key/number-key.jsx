@@ -2,7 +2,8 @@ import React from "react";
 import {
     Container,
     Row,
-    Col
+    Col,
+    Alert
   } from "react-bootstrap";
 
 import Button from "../../utilities/button/button";
@@ -12,6 +13,22 @@ import Button from "../../utilities/button/button";
 
 
 function NumberKey({theme, onClick, numbersKeysArray, ...otherProps }){
+
+  theme = (theme && typeof theme === 'object')?theme:{ color: "dark", text: "text-white" } ;
+  if(typeof onClick !== 'function'){
+    onClick = (arg)=>{console.log(arg)}
+  }
+  if(!(Array.isArray(numbersKeysArray))){
+    return (
+      <Container {...otherProps}>
+            <Row className="justify-content-center">
+            <Col><Alert variant="danger">
+            Prop numbersKeysArray must be an array
+          </Alert></Col>
+            </Row>
+      </Container>
+    );
+  }
 
     const numStr = numbersKeysArray.map((variable, index) => {
         let button;
@@ -42,4 +59,7 @@ function NumberKey({theme, onClick, numbersKeysArray, ...otherProps }){
     );
 }
 
+NumberKey.defaultProps = {
+  theme: 'light'
+};
 export default NumberKey;
