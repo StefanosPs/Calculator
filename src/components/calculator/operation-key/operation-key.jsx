@@ -7,7 +7,7 @@ const OperationKey = ({theme, onClick, mathOperationObj, ...otherProps}) => {
     //console.dir(mathOperationObj);
   theme = (theme && typeof theme === 'object')?theme:{ color: "dark", text: "text-white" } ;
   if(typeof onClick !== 'function'){
-    onClick = (arg)=>{console.log(arg0, arg1 )}
+    onClick = (arg0, arg1 )=>{console.log(arg0, arg1 )}
   }
   if( typeof mathOperationObj !== 'object' ){ 
     return (
