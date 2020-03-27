@@ -16,6 +16,8 @@ import OperationKey from "./operation-key/operation-key";
 function Calculator({ currentTheme }) {
   let theme = currentTheme;
 
+  theme = (theme && typeof theme === 'object')?theme:{ color: "dark", text: "text-white" } ;
+  
   const [calculatorObj, setCalculatorObj] = useState({
     mathExpStr: "",
     toastEl: []
@@ -92,18 +94,7 @@ function Calculator({ currentTheme }) {
     try {
       calculator.pushItem(key);
     } catch (error) {
-        return displayError(error);
-    //   let index = calculatorObj.toastEl.length;
-
-    //   setCalculatorObj({
-    //     ...calculatorObj,
-    //     toastEl: [
-    //       <ToastWarning key={`key-${index}`} headerTitle={error.name}>
-    //         {error.message}
-    //       </ToastWarning>
-    //     ]
-    //   });
-    //   return;
+        return displayError(error); 
     }
     updateMathFn();
   };
