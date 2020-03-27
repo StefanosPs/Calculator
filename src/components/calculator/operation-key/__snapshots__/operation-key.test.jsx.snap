@@ -1,0 +1,275 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders mathOperationObj when there are no props 1`] = `
+<div
+  className="container"
+>
+  <div
+    className="justify-content-center row"
+  >
+    <div
+      className="col"
+    >
+      <div
+        className="fade alert alert-danger show"
+        role="alert"
+      >
+        Prop mathOperationObj must be an object
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`renders mathOperationObj when there are props 1`] = `
+<div
+  className="container"
+>
+  <div
+    className="row"
+  >
+    <div
+      className="col-4"
+      style={
+        Object {
+          "textAlign": "center",
+        }
+      }
+    >
+      <button
+        className="shadow pl-3 pr-3 text-white mb-1 rounded btn btn-outline-{theme.color} btn-block"
+        disabled={false}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
+        text="Divide"
+        type="button"
+      >
+        /
+      </button>
+    </div>
+    <div
+      className="col-4"
+      style={
+        Object {
+          "textAlign": "center",
+        }
+      }
+    >
+      <button
+        className="shadow pl-3 pr-3 text-white mb-1 rounded btn btn-outline-{theme.color} btn-block"
+        disabled={false}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
+        text="Μultiplication"
+        type="button"
+      >
+        X
+      </button>
+    </div>
+    <div
+      className="col-4"
+      style={
+        Object {
+          "textAlign": "center",
+        }
+      }
+    >
+      <button
+        className="shadow pl-3 pr-3 text-white mb-1 rounded btn btn-outline-{theme.color} btn-block"
+        disabled={false}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
+        text="Minus,"
+        type="button"
+      >
+        -
+      </button>
+    </div>
+    <div
+      className="col-4"
+      style={
+        Object {
+          "textAlign": "center",
+        }
+      }
+    >
+      <button
+        className="shadow pl-3 pr-3 text-white mb-1 rounded btn btn-outline-{theme.color} btn-block"
+        disabled={false}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
+        text="Add"
+        type="button"
+      >
+        +
+      </button>
+    </div>
+    <div
+      className="col-4"
+      style={
+        Object {
+          "textAlign": "center",
+        }
+      }
+    >
+      <button
+        className="shadow pl-3 pr-3 text-white mb-1 rounded btn btn-outline-{theme.color} btn-block"
+        disabled={false}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
+        text="Open Parenthesis"
+        type="button"
+      >
+        (
+      </button>
+    </div>
+    <div
+      className="col-4"
+      style={
+        Object {
+          "textAlign": "center",
+        }
+      }
+    >
+      <button
+        className="shadow pl-3 pr-3 text-white mb-1 rounded btn btn-outline-{theme.color} btn-block"
+        disabled={false}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
+        text="Close Parenthesis"
+        type="button"
+      >
+        )
+      </button>
+    </div>
+    <div
+      className="col-4"
+      style={
+        Object {
+          "textAlign": "center",
+        }
+      }
+    >
+      <button
+        className="shadow pl-3 pr-3 text-white mb-1 rounded btn btn-outline-{theme.color} btn-block"
+        disabled={false}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
+        text="Squared"
+        type="button"
+      >
+        x²
+      </button>
+    </div>
+    <div
+      className="col-4"
+      style={
+        Object {
+          "textAlign": "center",
+        }
+      }
+    >
+      <button
+        className="shadow pl-3 pr-3 text-white mb-1 rounded btn btn-outline-{theme.color} btn-block"
+        disabled={false}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
+        text="Square Root"
+        type="button"
+      >
+        √x
+      </button>
+    </div>
+    <div
+      className="col-4"
+      style={
+        Object {
+          "textAlign": "center",
+        }
+      }
+    >
+      <button
+        className="shadow pl-3 pr-3 text-white mb-1 rounded btn btn-outline-{theme.color} btn-block"
+        disabled={false}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
+        text="Undo"
+        type="button"
+      >
+        ↶
+      </button>
+    </div>
+    <div
+      className="col-4"
+      style={
+        Object {
+          "textAlign": "center",
+        }
+      }
+    >
+      <button
+        className="shadow pl-3 pr-3 text-white mb-1 rounded btn btn-outline-{theme.color} btn-block"
+        disabled={false}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
+        text="Clear Display"
+        type="button"
+      >
+        C
+      </button>
+    </div>
+    <div
+      className="col-8"
+      style={
+        Object {
+          "textAlign": "center",
+        }
+      }
+    >
+      <button
+        className="shadow pl-3 pr-3 text-white mb-1 rounded btn btn-primary btn-block"
+        disabled={false}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
+        text="Calculate"
+        type="button"
+      >
+        =
+      </button>
+    </div>
+  </div>
+</div>
+`;
