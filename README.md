@@ -9,7 +9,7 @@
     - [] Update History
     - [] Configure as  Progressive Web App [PWA](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-## Development
+## Getting started
 ```sh
 $ cp .env.sample .env 
 ```
