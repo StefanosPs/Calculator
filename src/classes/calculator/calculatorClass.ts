@@ -215,13 +215,13 @@ class Calculator {
 		try {
 			result = eval(mathFn);
 			this._updateHistory();
-			this.mathExp = [result.toString()];
+			
 		} catch (error) {
 			console.log(`mathFn ${mathFn} `)
 			console.error(error);
 			return '0';
 		}
-
+		this.mathExp = [this._getNum(result)];
 		return this._getNum(result);
 
 		// return '0';
