@@ -1,4 +1,4 @@
-import {mathOperationObj, numbersKeysArray, OperationType} from "./calculatorConstants";
+import {mathOperationObj, numbersKeysArray, OperationType, mathOperationInt, mathFunctionInt} from "./calculatorConstants";
 
 class Calculator {
 	private history: Array<Array<string>>;
