@@ -1,6 +1,7 @@
 import { ThemesActionTypes } from "./theme.types";
-import { THEMES } from "../../data/theme";
+// import { THEMES } from "../../data/theme";
 
+const THEMES = process.env.REACT_APP_BOOTSTRAP_THEMES;
 const INITIAL_THEME = {
   currentTheme: THEMES.dark 
 };
