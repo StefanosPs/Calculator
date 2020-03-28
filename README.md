@@ -1,13 +1,30 @@
 # Calculator
+>This project is a simple calculator just for fun.
 
-This project is a simple calculator just for fun.
+**This is work in progress**
 
-## TODO List
-    - [] Add testers
-    - [] Add Square Root calculation
-    - [] Configure as  Progressive Web App [PWA](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+<!-- ## Getting started
+```sh
+$ cp .env.sample .env 
+``` -->
+
+## Development
+```sh
+# Runs the app in the development mode.
+yarn start
+
+# Launches the test runner in the interactive watch mode.
+yarn test
+
+#Builds the app for production to the `build` folder.
+yarn build
+
+``` 
 
 <!-- 
+
+## TODO List 
+    - [] Configure as  Progressive Web App [PWA](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
 ## Available Scripts
 
@@ -75,4 +92,15 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `yarn build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+
+## Docs
+
+```sh
+# Generate JS docs
+$ yarn jsdoc
+
+# Generate API docs
+$ yarn apidoc
+```
  -->

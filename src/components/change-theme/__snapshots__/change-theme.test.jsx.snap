@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders  ChangeTheme 1`] = `
+<div
+  className="switch float-right"
+>
+  <h6>
+    Change Theme
+  </h6>
+  <label
+    className="switch-label"
+  >
+    <input
+      onClick={[Function]}
+      type="checkbox"
+    />
+    <span
+      className="slider round"
+    />
+  </label>
+</div>
+`;

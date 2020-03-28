@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders NumberKey when there are no props 1`] = `
+<div
+  className="mt-2 text-white bg-transparent border-0 shadow-sm mb-1 container"
+  style={
+    Object {
+      "minHeight": 100,
+    }
+  }
+>
+  
+</div>
+`;
+
+exports[`renders NumberKey when there are props 1`] = `
+<div
+  className="mt-2 text-white bg-transparent border-0 shadow-sm mb-1 container"
+  style={
+    Object {
+      "minHeight": 100,
+    }
+  }
+/>
+`;

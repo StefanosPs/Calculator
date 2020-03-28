@@ -1,0 +1,228 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders NumberKey when there are no props 1`] = `
+<div
+  className="container"
+>
+  <div
+    className="justify-content-center row"
+  >
+    <div
+      className="col"
+    >
+      <div
+        className="fade alert alert-danger show"
+        role="alert"
+      >
+        Prop numbersKeysArray must be an array
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`renders NumberKey when there are props 1`] = `
+<div
+  className="container"
+>
+  <div
+    className="justify-content-center row"
+  >
+    <div
+      className="col-4"
+      style={
+        Object {
+          "textAlign": "center",
+        }
+      }
+    >
+      <button
+        className="shadow mb-1 pl-3 pr-3 text-white  rounded btn btn-outline-dark"
+        disabled={false}
+        onClick={[Function]}
+        type="button"
+      >
+        7
+      </button>
+    </div>
+    <div
+      className="col-4"
+      style={
+        Object {
+          "textAlign": "center",
+        }
+      }
+    >
+      <button
+        className="shadow mb-1 pl-3 pr-3 text-white  rounded btn btn-outline-dark"
+        disabled={false}
+        onClick={[Function]}
+        type="button"
+      >
+        8
+      </button>
+    </div>
+    <div
+      className="col-4"
+      style={
+        Object {
+          "textAlign": "center",
+        }
+      }
+    >
+      <button
+        className="shadow mb-1 pl-3 pr-3 text-white  rounded btn btn-outline-dark"
+        disabled={false}
+        onClick={[Function]}
+        type="button"
+      >
+        9
+      </button>
+    </div>
+    <div
+      className="col-4"
+      style={
+        Object {
+          "textAlign": "center",
+        }
+      }
+    >
+      <button
+        className="shadow mb-1 pl-3 pr-3 text-white  rounded btn btn-outline-dark"
+        disabled={false}
+        onClick={[Function]}
+        type="button"
+      >
+        4
+      </button>
+    </div>
+    <div
+      className="col-4"
+      style={
+        Object {
+          "textAlign": "center",
+        }
+      }
+    >
+      <button
+        className="shadow mb-1 pl-3 pr-3 text-white  rounded btn btn-outline-dark"
+        disabled={false}
+        onClick={[Function]}
+        type="button"
+      >
+        5
+      </button>
+    </div>
+    <div
+      className="col-4"
+      style={
+        Object {
+          "textAlign": "center",
+        }
+      }
+    >
+      <button
+        className="shadow mb-1 pl-3 pr-3 text-white  rounded btn btn-outline-dark"
+        disabled={false}
+        onClick={[Function]}
+        type="button"
+      >
+        6
+      </button>
+    </div>
+    <div
+      className="col-4"
+      style={
+        Object {
+          "textAlign": "center",
+        }
+      }
+    >
+      <button
+        className="shadow mb-1 pl-3 pr-3 text-white  rounded btn btn-outline-dark"
+        disabled={false}
+        onClick={[Function]}
+        type="button"
+      >
+        1
+      </button>
+    </div>
+    <div
+      className="col-4"
+      style={
+        Object {
+          "textAlign": "center",
+        }
+      }
+    >
+      <button
+        className="shadow mb-1 pl-3 pr-3 text-white  rounded btn btn-outline-dark"
+        disabled={false}
+        onClick={[Function]}
+        type="button"
+      >
+        2
+      </button>
+    </div>
+    <div
+      className="col-4"
+      style={
+        Object {
+          "textAlign": "center",
+        }
+      }
+    >
+      <button
+        className="shadow mb-1 pl-3 pr-3 text-white  rounded btn btn-outline-dark"
+        disabled={false}
+        onClick={[Function]}
+        type="button"
+      >
+        3
+      </button>
+    </div>
+    <div
+      className="col-4"
+      style={
+        Object {
+          "textAlign": "center",
+        }
+      }
+    >
+      <button
+        className="shadow mb-1 pl-3 pr-3 text-white  rounded btn btn-outline-dark"
+        disabled={false}
+        onClick={[Function]}
+        type="button"
+      >
+        0
+      </button>
+    </div>
+    <div
+      className="col-4"
+      style={
+        Object {
+          "textAlign": "center",
+        }
+      }
+    >
+      <button
+        className="shadow mb-1 pl-3 pr-3 text-white  rounded btn btn-outline-dark"
+        disabled={false}
+        onClick={[Function]}
+        type="button"
+      >
+        .
+      </button>
+    </div>
+    <div
+      className="col-4"
+      style={
+        Object {
+          "textAlign": "center",
+        }
+      }
+    />
+  </div>
+</div>
+`;
