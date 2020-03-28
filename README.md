@@ -3,12 +3,6 @@
 
 **This is work in progress**
 
-## TODO List
-    - [X] Add Square Root calculation
-    - [X] Add testers
-    - [] Update History
-    - [] Configure as  Progressive Web App [PWA](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
 <!-- ## Getting started
 ```sh
 $ cp .env.sample .env 
@@ -25,10 +19,12 @@ yarn test
 #Builds the app for production to the `build` folder.
 yarn build
 
-```
-
+``` 
 
 <!-- 
+
+## TODO List 
+    - [] Configure as  Progressive Web App [PWA](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
 ## Available Scripts
 
