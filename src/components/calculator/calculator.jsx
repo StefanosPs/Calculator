@@ -14,6 +14,8 @@ import {
 import ChangeTheme from "../change-theme/change-theme";
 import NumberKey from "./number-key/number-key";
 import OperationKey from "./operation-key/operation-key";
+import DisplayHistory from "./display-history/display-history";
+
 
 function Calculator({ currentTheme }) {
   let theme = currentTheme;
@@ -22,6 +24,7 @@ function Calculator({ currentTheme }) {
   
   const [calculatorObj, setCalculatorObj] = useState({
     mathExpStr: "",
+    mathCalculationHistory:"",
     toastEl: []
   });
 
@@ -96,6 +99,7 @@ function Calculator({ currentTheme }) {
     try {
       calculator.pushItem(key);
     } catch (error) {
+      console.error(error);
         return displayError(error); 
     }
     updateMathFn();
@@ -106,9 +110,11 @@ function Calculator({ currentTheme }) {
         let num =  calculator.getAlgebraicExpression();
         setCalculatorObj({
             mathExpStr: num,
+            mathCalculationHistory: calculator.get_calculationHistory(),
             toastEl: []
           });
       } catch (error) {
+        console.error(error);
         return displayError(error);
       }
       
@@ -129,18 +135,21 @@ function Calculator({ currentTheme }) {
         <Row>
           <Col xs={12} className="float-right mt-auto">
             <ChangeTheme />
-            <FormControl
-              id="history"
-              readOnly
-              as="textarea"
-              className={`mt-2 ${theme.text} bg-transparent border-0 shadow-sm mb-1`}
-            />
+          </Col>
+        </Row>
+        <Row>
+          <Col xs={12}>
+            <DisplayHistory theme={theme} calculationHistory={calculatorObj.mathCalculationHistory} />
+          </Col>
+        </Row>
+        <Row>
+          <Col xs={12}>
             <FormControl
               id="mathfn"
               className={`mb-2  ${theme.text} bg-transparent border-0 shadow-sm mb-1`}
               as="input"
-              defaultValue={calculatorObj.mathExpStr}
               readOnly
+              defaultValue={calculatorObj.mathExpStr}
             />
             {calculatorObj.toastEl}
           </Col>

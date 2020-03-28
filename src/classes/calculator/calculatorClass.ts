@@ -1,22 +1,25 @@
-import {mathOperationObj, numbersKeysArray, OperationType, mathOperationInt, mathFunctionInt} from "./calculatorConstants";
+import {mathOperationObj, numbersKeysArray, OperationType, mathOperationInt} from "./calculatorConstants";
 
 class Calculator {
-	private history: Array<Array<string>>;
-	private mathExp: Array<string> = [];
+	private _history: Array<Array<string>>;
+	private _calculationHistory: Array<any>;
+	private _mathExp: Array<string> = [];
 
-	private expectedCloseParenthesis: number =  0 ;
+	private _expectedCloseParenthesis: number =  0 ;
 
 	constructor() {
-		this.history = [];
-		this.mathExp = [];
+		this._history = [];
+		this._mathExp = [];
+		this._calculationHistory = [];
 	}
+
 
 	/**
 	 * getAlgebraicExpression
 	 */
 	public getAlgebraicExpression() : string {
 		let retStr: string = "";
-		this.mathExp.forEach(element => {
+		this._mathExp.forEach(element => {
 			if (mathOperationObj[element]) {
 				let tmp = mathOperationObj[element] as mathOperationInt;
 				// mathOperationObj[element] 
@@ -27,6 +30,9 @@ class Calculator {
 		
 		return retStr;
 	}
+	public get_calculationHistory() : Array<any> { 
+		return this._calculationHistory;
+	} 
 
 	/**
 	 * pushItem
@@ -47,11 +53,11 @@ class Calculator {
 			throw new Error(`No valid item ${item}`);
 		}
 
-		if(item === "closeParenthesis" && this.expectedCloseParenthesis<1){
+		if(item === "closeParenthesis" && this._expectedCloseParenthesis<1){
 			throw new Error(`Failed to Push '${mathOperationObj[item]['title']}' without '${mathOperationObj['openParenthesis']['title']}' exists`);
 		}
 		
-		if (this.mathExp.length === 0) {
+		if (this._mathExp.length === 0) {
 			//the first cal can be square, open parenthesis number
 			if (isItemNumFlag) {
 				addItem = true;
@@ -61,7 +67,7 @@ class Calculator {
 				throw new Error(`The first char can be Number or Square Root or Open Parenthesis `);
 			}
 		} else {
-			let lastItem = this.mathExp[(this.mathExp.length - 1)];
+			let lastItem = this._mathExp[(this._mathExp.length - 1)];
 
 			let isLastItemNumFlag: boolean = false;
 			let isLastMathOperation: boolean = false;
@@ -120,8 +126,8 @@ class Calculator {
 						// ** to ^2 
 						item = 'squared';
 					}
-					this._updateHistory();
-					this.mathExp[(this.mathExp.length - 1)] = item;
+					this._update_history();
+					this._mathExp[(this._mathExp.length - 1)] = item;
 					return true;
 				}else if(
 					item === "squared" 
@@ -153,12 +159,12 @@ class Calculator {
 
 
 		if (addItem) {
-			this._updateHistory();
-			this.mathExp.push(item);
+			this._update_history();
+			this._mathExp.push(item);
 			
 		} else if (appendItem) {
-			this._updateHistory();
-			this.mathExp[(this.mathExp.length - 1)] += item; 
+			this._update_history();
+			this._mathExp[(this._mathExp.length - 1)] += item; 
 		} else {
 			if (mathOperationObj[item]) {
 				throw new Error(`Failed to Push '${mathOperationObj[item]['title']}'`);
@@ -172,37 +178,37 @@ class Calculator {
 		} 
 		
 		if(item === "openParenthesis"){
-			this.expectedCloseParenthesis++;
+			this._expectedCloseParenthesis++;
 		}else if(item === "closeParenthesis"){
-			this.expectedCloseParenthesis--;
+			this._expectedCloseParenthesis--;
 		}
 
 		return true;
 	}
 
 	public reset() : void{
-		this._updateHistory();
-		this.mathExp = [];
-		this.expectedCloseParenthesis = 0;
+		this._update_history();
+		this._mathExp = [];
+		this._expectedCloseParenthesis = 0;
 	}
 
 	public undo() : void {
-		if (this.history.length > 0) {
-			this.mathExp = this.history.pop()!;
-		} else if (this.history.length === 0) {
-			this.mathExp = [];
+		if (this._history.length > 0) {
+			this._mathExp = this._history.pop()!;
+		} else if (this._history.length === 0) {
+			this._mathExp = [];
 		}
 	}
 
 	public calculate() : string {
 
-		for (let index = 0; index < this.expectedCloseParenthesis; index++) {
+		for (let index = 0; index < this._expectedCloseParenthesis; index++) {
 			// retStr += `<span style="opacity: .9">)</span>`;
 			this.pushItem('closeParenthesis');
 		} 
 		let mathFn = '';
-		for (let index = 0; index < this.mathExp.length; index++) {
-			const element = this.mathExp[index];
+		for (let index = 0; index < this._mathExp.length; index++) {
+			const element = this._mathExp[index];
 			if (mathOperationObj[element]) {
 				let tmp = mathOperationObj[element] as mathOperationInt;
 				mathFn += tmp['mathExp'];
@@ -212,20 +218,20 @@ class Calculator {
 		}
 		
 		let result = 0;
+		let resultStr = "0";
 		try {
 			result = eval(mathFn);
-			this._updateHistory();
+			this._update_history();
 			
 		} catch (error) {
 			console.log(`mathFn ${mathFn} `)
 			console.error(error);
-			return '0';
+			return resultStr;
 		}
-		this.mathExp = [this._getNum(result)];
-		return this._getNum(result);
-
-		// return '0';
-
+		resultStr = this._getNum(result);
+		this._update_calculationHistory(resultStr);
+		this._mathExp = [resultStr];
+		return resultStr; 
 	}
 
 	private _getNum(num: number) : string{
@@ -241,11 +247,25 @@ class Calculator {
 	/**
 	 * updateHistory
 	 */
-	private _updateHistory() {
-		if (this.mathExp.length > 0) {
-			this.history.push([...this.mathExp]);
+	private _update_history() {
+		if (this._mathExp.length > 0) {
+			this._history.push([...this._mathExp]);
 		}
 	}
+	private _update_calculationHistory(result : string) {
+		if (this._mathExp.length > 0) {
+			if(this._calculationHistory.length > 3){
+				this._calculationHistory.shift();
+			}
+			this._calculationHistory.push({
+				algebraicExp: this.getAlgebraicExpression(),
+				result: result
+			});
+			this._history = [];
+		}
+	}
+
+	
 }
 
 
