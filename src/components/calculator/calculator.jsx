@@ -139,7 +139,7 @@ function Calculator({ currentTheme }) {
         </Row>
         <Row>
           <Col xs={12}>
-            <DisplayHistory theme={theme} calculationHistory={calculatorObj.mathCalculationHistory} />
+            <DisplayHistory calculationHistory={calculatorObj.mathCalculationHistory} />
           </Col>
         </Row>
         <Row>
