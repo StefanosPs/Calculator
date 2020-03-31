@@ -8,13 +8,15 @@ import {
 
 const mathOperationArray = Object.keys(mathOperationObj).filter(el => { return (mathOperationObj[el].type !== OperationType.calcCallFn) ; } );
 
+afterEach(() => {
+    calculator.reset();
+});
 describe('Add', () => {
     test('2+2=4', () => {
         expect(calculator.pushItem("2")).toBe(true)
         expect(calculator.pushItem("plus")).toBe(true)
         expect(calculator.pushItem("2")).toBe(true)
-        expect(calculator.calculate()).toEqual("4")
-        calculator.reset();
+        expect(calculator.calculate()).toEqual("4") 
     });
 
 
@@ -24,16 +26,15 @@ describe('Add', () => {
         expect(calculator.pushItem("plus")).toBe(true)
         expect(calculator.pushItem("987654321")).toBe(true)
         expect(calculator.calculate()).toEqual("1111111110")
-        calculator.reset();
+        
     });
-
-    calculator.reset();
+ 
     test('987654321 + 0 = 987654321', () => {
         expect(calculator.pushItem("987654321")).toBe(true)
         expect(calculator.pushItem("plus")).toBe(true)
         expect(calculator.pushItem("0")).toBe(true)
         expect(calculator.calculate()).toEqual("987654321")
-        calculator.reset();
+        
     });
 
 
@@ -45,8 +46,7 @@ describe('Add', () => {
         expect(calculator.pushItem("minus")).toBe(true)
         expect(calculator.pushItem("14")).toBe(true)
         expect(calculator.pushItem("closeParenthesis")).toBe(true)
-        expect(calculator.calculate()).toEqual("-1001")
-        calculator.reset();
+        expect(calculator.calculate()).toEqual("-1001") 
     });
 
     test('-0 + 0 = 0 ', () => {
@@ -54,8 +54,7 @@ describe('Add', () => {
         expect(calculator.pushItem("0")).toBe(true)
         expect(calculator.pushItem("plus")).toBe(true)
         expect(calculator.pushItem("0")).toBe(true)
-        expect(calculator.calculate()).toEqual("0")
-        calculator.reset();
+        expect(calculator.calculate()).toEqual("0") 
     });
 });
 
@@ -63,24 +62,22 @@ describe('Basic Replace', () => {
     test(
         'The first char can be Number or Square Root or Open Parenthesis', () => {
             expect(() => { calculator.pushItem('divide') }).toThrow(); 
-            calculator.reset();
+            
             expect(calculator.pushItem("1")).toBe(true)
             calculator.reset();
             expect(() => { calculator.pushItem('multiplication') }).toThrow(); 
-            calculator.reset();
+            
             expect(calculator.pushItem("minus")).toBe(true)
-            calculator.reset();
+            
             expect(calculator.pushItem("plus")).toBe(true)
-            calculator.reset();
+            
             expect(calculator.pushItem("openParenthesis")).toBe(true)
+            
             calculator.reset();
-
-            expect(() => { calculator.pushItem('closeParenthesis') }).toThrow(); 
-            calculator.reset()
-            expect(() => { calculator.pushItem('squared') }).toThrow(); 
-            calculator.reset()
+            expect(() => { calculator.pushItem('closeParenthesis') }).toThrow();  
+            expect(() => { calculator.pushItem('squared') }).toThrow();  
             expect(calculator.pushItem('squareRoot') ).toBe(true);
-            calculator.reset()
+            
         }
     );
 
@@ -88,7 +85,7 @@ describe('Basic Replace', () => {
         
         expect(calculator.pushItem(".")).toBe(true)
         expect(() => { calculator.pushItem("."); }).toThrow();
-        calculator.reset();
+        
     });
     
     
@@ -101,7 +98,7 @@ describe('Basic Replace', () => {
                     expect(calculator.pushItem("1")).toBe(true)
                     expect(() => { calculator.pushItem(operation) }).toThrow();  
                     // console.log(calculator.getAlgebraicExpression());
-                    calculator.reset();
+                    
             
                 });
             }else{
@@ -110,7 +107,7 @@ describe('Basic Replace', () => {
                     expect(calculator.pushItem("1")).toBe(true)
                     expect(calculator.pushItem(operation)).toBe(true)
                     // console.log(calculator.getAlgebraicExpression());
-                    calculator.reset();
+                    
             
                 });
             }
@@ -132,7 +129,7 @@ describe('Basic Replace', () => {
                             expect(() => { calculator.pushItem(element00) }).toThrow();  
                             expect(() => { calculator.pushItem(element01) }).toThrow();  
                             // console.log(calculator.getAlgebraicExpression());
-                            calculator.reset();
+                            
                     
                         });
                     }else if(element01 === "closeParenthesis" && element00 === "openParenthesis"){
@@ -142,7 +139,7 @@ describe('Basic Replace', () => {
                             expect(calculator.pushItem(element00)).toBe(true)
                             expect(calculator.pushItem(element01)).toBe(true)
                             // console.log(calculator.getAlgebraicExpression());
-                            calculator.reset();
+                            
                     
                         });
                     }
@@ -154,7 +151,7 @@ describe('Basic Replace', () => {
                         expect(calculator.pushItem(element00)).toBe(true)
                         expect(() => { calculator.pushItem(element01) }).toThrow();  
                         // console.log(calculator.getAlgebraicExpression());
-                        calculator.reset();
+                        
                 
                     });
                 }else if(element01 === "divide" && element00 === "openParenthesis") {
@@ -166,7 +163,7 @@ describe('Basic Replace', () => {
                         expect(calculator.pushItem(element00)).toBe(true)
                         expect(calculator.pushItem(element01)).toBe(true)
                         // console.log(calculator.getAlgebraicExpression());
-                        calculator.reset();
+                        
                 
                     });
                 }
@@ -189,7 +186,7 @@ describe('Basic Replace', () => {
                         expect(calculator.pushItem(element00)).toBe(true)
                         expect(calculator.pushItem(element01)).toBe(true)
                         // console.log(calculator.getAlgebraicExpression());
-                        calculator.reset();
+                        
                 
                     }); 
                 }
@@ -215,7 +212,7 @@ describe('Basic overflow', () => {
         expect(calculator.pushItem("789456789456789456789456789456789456789456789456789456")).toBe(true)
         expect(calculator.pushItem("squared")).toBe(true) 
         expect(() => calculator.calculate() ).toThrow();  
-        calculator.reset();
+        
     });
 });
 describe('Basic divide', () => {
@@ -235,7 +232,7 @@ describe('Basic divide', () => {
             expect(calculator.pushItem("divide")).toBe(true)
             expect(calculator.pushItem(b)).toBe(true)
             expect(calculator.calculate()).toBe(expected);
-            calculator.reset();
+            
         });
 
 
@@ -248,7 +245,7 @@ describe('Basic divide_by_zero', () => {
         expect(calculator.pushItem("0")).toBe(true)
         expect(() => { calculator.calculate(); }).toThrow();
         // expect(calculator.calculate()).toEqual("Infinity")
-        calculator.reset();
+        
     });
 
     test('0/0', () => {
@@ -257,7 +254,7 @@ describe('Basic divide_by_zero', () => {
         expect(calculator.pushItem("0.0")).toBe(true)
         expect(() => { calculator.calculate(); }).toThrow();
         // expect(calculator.calculate()).toEqual("Infinity")
-        calculator.reset();
+        
     });
 });
 describe('Basic brackets', () => {
@@ -266,7 +263,7 @@ describe('Basic brackets', () => {
             expect(calculator.pushItem(element)).toBe(true)
         });
         expect(calculator.calculate()).toEqual("1");
-        calculator.reset();
+        
     });
 
     test('0 * ( 1 + 2 + 3 + 4)  ', () => {
@@ -274,7 +271,7 @@ describe('Basic brackets', () => {
             expect(calculator.pushItem(element)).toBe(true)
         });
         expect(calculator.calculate()).toEqual("0");
-        calculator.reset();
+        
     });
 
     test('(((2 + 8) * (5 / 2)) - 3)  ', () => {
@@ -290,7 +287,7 @@ describe('Basic brackets', () => {
             expect(calculator.pushItem(element)).toBe(true)
         });
         expect(calculator.calculate()).toEqual("22");
-        calculator.reset();
+        
     });
 }); 
 
