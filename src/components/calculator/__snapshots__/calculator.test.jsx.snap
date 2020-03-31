@@ -46,12 +46,7 @@ exports[`renders  Calculator 1`] = `
         className="col-12"
       >
         <div
-          className="mt-2 text-white bg-transparent border-0 shadow-sm mb-1 container"
-          style={
-            Object {
-              "minHeight": 100,
-            }
-          }
+          className="mt-2 bg-transparent border-0 shadow-sm mb-1 display-history container"
         >
           
         </div>
