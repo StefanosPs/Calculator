@@ -1,14 +1,16 @@
 # Calculator
->This project is a simple calculator just for fun.
+
+> This project is a simple calculator just for fun.
 
 **This is work in progress**
 
 <!-- ## Getting started
 ```sh
-$ cp .env.sample .env 
+$ cp .env.sample .env
 ``` -->
 
 ## Development
+
 ```sh
 # Runs the app in the development mode.
 yarn start
@@ -19,7 +21,7 @@ yarn test
 #Builds the app for production to the `build` folder.
 yarn build
 
-``` 
+```
 
 <!-- 
 
@@ -92,15 +94,3 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `yarn build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
-
-
-## Docs
-
-```sh
-# Generate JS docs
-$ yarn jsdoc
-
-# Generate API docs
-$ yarn apidoc
-```
- -->
