@@ -1,11 +1,9 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
-import { Provider } from "react-redux";
-import store from  '../../redux/store';
+import renderer from 'react-test-renderer'; 
 import ChangeTheme from './change-theme';
- 
+import  ThemeProvider from '../theme-provider'
 
 it('renders  ChangeTheme', () => {
-    const changeTheme = renderer.create(<Provider store={store}><ChangeTheme /></Provider>).toJSON();
+    const changeTheme = renderer.create(<ThemeProvider><ChangeTheme /></ThemeProvider>).toJSON();
     expect(changeTheme).toMatchSnapshot();
 });
