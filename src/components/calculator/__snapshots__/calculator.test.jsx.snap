@@ -47,9 +47,7 @@ exports[`renders  Calculator 1`] = `
       >
         <div
           className="mt-2 bg-transparent border-0 shadow-sm mb-1 display-history container"
-        >
-          
-        </div>
+        />
       </div>
     </div>
     <div

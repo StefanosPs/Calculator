@@ -1,20 +1,14 @@
-import React from "react";
-
-import {connect} from 'react-redux'
-import { createStructuredSelector } from 'reselect';
-import { selectCurrentTheme } from './redux/theme/theme.selector'
+import React from "react"; 
 
 import "./App.css";
 
 import Calculator from "./components/calculator/calculator";
+import  {ThemeProvider} from './components/theme/'
 
-const App = ({currentTheme}) => {
-  return <Calculator currentTheme={currentTheme}></Calculator>;
+const App = ({children}) => { 
+  return (<ThemeProvider>
+    <Calculator />
+    </ThemeProvider>);
 }
 
-
-const mapStatetoProps = createStructuredSelector({
-  currentTheme: selectCurrentTheme
-})
-
-export default connect(mapStatetoProps)(App);
+export default App;
