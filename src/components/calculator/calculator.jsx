@@ -3,6 +3,7 @@ import { Container, Row, Col, FormControl, Form } from "react-bootstrap";
 
 import ToastWarning from "../utilities/toast/warning/toast-warning";
 
+import  {useTheme} from '../theme/'
 import {
   numbersKeysArray,
   mathOperationObj
@@ -11,20 +12,18 @@ import {
   calculator
 } from "../../classes/calculator/calculatorClass";
 
-import ChangeTheme from "../change-theme/change-theme";
+import ChangeTheme from "../theme/change-theme/change-theme";
 import NumberKey from "./number-key/number-key";
 import OperationKey from "./operation-key/operation-key";
 import DisplayHistory from "./display-history/display-history";
 
 
-function Calculator({ currentTheme }) {
-  let theme = currentTheme;
+function Calculator() {
+  const {currentTheme: theme} = useTheme();
 
-  theme = (theme && typeof theme === 'object')?theme:{ color: "dark", text: "text-white" } ;
-  
+
   const [calculatorObj, setCalculatorObj] = useState({
-    mathExpStr: "",
-    mathCalculationHistory:"",
+    mathExpStr: "", 
     toastEl: []
   });
 
@@ -86,13 +85,16 @@ function Calculator({ currentTheme }) {
 
   const displayError = (error) => {
     let index = calculatorObj.toastEl.length;
-        setCalculatorObj({
-            ...calculatorObj,
+        setCalculatorObj((prev) => {
+          return ({
+            ...prev,
             toastEl: [
               <ToastWarning key={`key-${index}`} headerTitle={error.name}>
                 {error.message}
               </ToastWarning>
             ]
+        
+        })
         });
   }
   const pushItem = key => {
@@ -110,7 +112,6 @@ function Calculator({ currentTheme }) {
         let num =  calculator.getAlgebraicExpression();
         setCalculatorObj({
             mathExpStr: num,
-            mathCalculationHistory: calculator.get_calculationHistory(),
             toastEl: []
           });
       } catch (error) {
@@ -139,7 +140,7 @@ function Calculator({ currentTheme }) {
         </Row>
         <Row>
           <Col xs={12}>
-            <DisplayHistory calculationHistory={calculatorObj.mathCalculationHistory} />
+            <DisplayHistory calculationHistory={calculator.get_calculationHistory()} />
           </Col>
         </Row>
         <Row>
