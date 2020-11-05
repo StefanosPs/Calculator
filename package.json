@@ -2,11 +2,29 @@
 	"name": "calculator",
 	"version": "0.1.0",
 	"private": true,
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/StefanosPs/Calculator.git"
+	},
+	"author": {
+		"name": "Calculator",
+		"email": "stepsarras@gmail.com"
+	},
 	"scripts": {
-		"start": "react-scripts start",
+		"start": "nf start -p 3333",
 		"build": "react-scripts build",
 		"test": "react-scripts test",
-		"eject": "react-scripts eject"
+		"eject": "react-scripts eject",
+		"react:start": "BROWSER=none react-scripts start",
+		"electron": "electron .",
+		"electron:start": "node src/electron-react-starter.js",
+		"pack": "build --dir",
+		"postinstall": "install-app-deps",
+		"package": "yarn build && electron-builder build --publish never",
+		"prepackage-linux": "yarn build",
+		"package-linux": "electron-builder build --linux",
+		"prepackage-win": "yarn build",
+		"package-win": "electron-builder build --win"
 	},
 	"husky": {
 		"hooks": {
@@ -39,6 +57,43 @@
 			"last 1 safari version"
 		]
 	},
+	"homepage": "./",
+	"main": "public/electron.js",
+	"build": {
+		"appId": "gr.stepsarras.electron-calculator",
+		"productName": "CalculatorReact",
+		"directories": {
+			"buildResources": "public"
+		},
+		"icon": "./public/calculator.png",
+		"files": [
+			"build/",
+			"node_modules/",
+			"package.json"
+		],
+		"win": {
+			"target": [
+				{
+					"target": "nsis",
+					"arch": [
+						"x64",
+						"ia32"
+					]
+				}
+			]
+		},
+		"linux": {
+			"publish": [
+				"github"
+			],
+			"target": [
+				"deb",
+				"rpm",
+				"AppImage"
+			],
+			"category": "Development"
+		}
+	},
 	"dependencies": {
 		"@fortawesome/fontawesome-svg-core": "1.2.32",
 		"@fortawesome/free-solid-svg-icons": "5.15.1",
@@ -51,6 +106,8 @@
 		"@types/react": "16.9.53",
 		"@types/react-dom": "16.9.8",
 		"bootstrap": "4.5.3",
+		"electron-is-dev": "1.2.0",
+		"foreman": "3.0.1",
 		"node-sass": "4.14.0",
 		"react": "17.0.0",
 		"react-bootstrap": "1.4.0",
@@ -62,12 +119,15 @@
 	"devDependencies": {
 		"@commitlint/cli": "11.0.0",
 		"@commitlint/config-conventional": "11.0.0",
+		"concurrently": "5.3.0",
+		"electron": "10.1.5",
+		"electron-builder": "22.9.1",
+		"electron-rebuild": "^2.0.1",
 		"husky": "4.3.0",
 		"lint-staged": "10.4.2",
 		"prettier": "1.18.2"
 	},
 	"engines": {
-		"node": ">=10.22.1 <15.0.0",
-		"npm": ">=6.9"
+		"node": ">=10.22.1 <15.0.0"
 	}
 }
