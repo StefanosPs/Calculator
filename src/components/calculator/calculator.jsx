@@ -130,7 +130,7 @@ function Calculator() {
       }}
     >
       <Container
-        className={`mt-auto pt-3 pb-3 bg-${theme.color} ${theme.text} rounded  shadow-sm`}
+        className={`mt-auto pt-3 pb-3 bg-${theme.color} ${theme.text}`}
         style={{ maxWidth: "720px" }}
       >
         <Row>
@@ -145,7 +145,7 @@ function Calculator() {
         </Row>
         <Row>
           <Col xs={12}>
-            <FormControl
+            <FormControl 
               id="mathfn"
               className={`mb-2  ${theme.text} bg-transparent border-0 shadow-sm mb-1`}
               as="input"

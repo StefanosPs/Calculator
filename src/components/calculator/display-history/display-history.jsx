@@ -19,6 +19,7 @@ function DisplayHistory({  calculationHistory }) {
   return (
     <Container
       className={`mt-2 bg-transparent border-0 shadow-sm mb-1 display-history`} 
+      fluid
     > 
       {calculationHistoryStr} 
     </Container>

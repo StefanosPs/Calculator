@@ -3,12 +3,13 @@ import React from "react";
 import "./App.css";
 
 import Calculator from "./components/calculator/calculator";
-import  {ThemeProvider} from './components/theme/'
+import  {useTheme} from './components/theme/';
 
-const App = ({children}) => { 
-  return (<ThemeProvider>
+const App = ({currentTheme}) => { 
+  const {currentTheme: theme} = useTheme();
+  return (<main className={` main bg-${theme.color} ${theme.text} shadow-sm`}>
     <Calculator />
-    </ThemeProvider>);
+    </main>);
 }
 
 export default App;
