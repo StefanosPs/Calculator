@@ -1,5 +1,5 @@
 // Modules to control application life and create native browser window
-const { app, BrowserWindow, nativeTheme } = require('electron');
+const { app, BrowserWindow, nativeTheme, Menu } = require('electron');
 const path = require('path');
 const url = require('url');
 
@@ -9,18 +9,29 @@ const windowConfig = {
 };
 
 const browserWindowConfig = {
-	frame: false,
-	// autoHideMenuBar: true,
-	// titleBarStyle: true,
+	// frame: false,
+	thickFrame:true,
+	autoHideMenuBar: true, 
+	//backgroundColor 
 	width: 720,
 	minWidth: 360,
 	height: 430,
 	minHeight: 430,
+	center: true,
+	closable: true,
+	skipTaskbar: false,
+	resize: true,
+	maximizable: true,
+	transparent: true,
 	webPreferences: {
-		preload: path.join(__dirname, 'preload.js')
-	},
-	transparent: true
+		preload: path.join(__dirname, 'preload.js'),
+		defaultEncoding: `UTF-8` 
+	}
 };
+
+const template = []; 
+const menu = Menu.buildFromTemplate(template)
+Menu.setApplicationMenu(menu)
 
 function createWindow() {
 	const params = {};
