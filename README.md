@@ -38,7 +38,3 @@ $ docker run --rm -ti \
 $ yarn package-linux
 $ yarn package-win
 ```
-
-TODO
-
-- [ ] Add minimize and close button
