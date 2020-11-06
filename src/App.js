@@ -7,9 +7,9 @@ import  {useTheme} from './components/theme/';
 
 const App = ({currentTheme}) => { 
   const {currentTheme: theme} = useTheme();
-  return (<div className={` main bg-${theme.color} ${theme.text}`}>
+  return (<main className={` main bg-${theme.color} ${theme.text} shadow-sm`}>
     <Calculator />
-    </div>);
+    </main>);
 }
 
 export default App;
