@@ -7,7 +7,7 @@ export function useTheme() {
 
 export default function ThemeProvider({ children, ...props }) {
 	const urlParams = new URLSearchParams(window.location.search);
-	const temp = urlParams.get('theme').toLocaleLowerCase();
+	const temp = (urlParams.get('theme')) ? urlParams.get('theme').toLowerCase():'light';
 	const defaultTheme = temp === 'dark' || temp === 'light' ? THEME[temp] : THEME.light;
 
 	const values = useProviderTheme(defaultTheme);
