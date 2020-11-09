@@ -6,7 +6,7 @@ exports[`renders  Calculator 1`] = `
   onSubmit={[Function]}
 >
   <div
-    className="mt-auto pt-3 pb-3 bg-dark text-white rounded  shadow-sm container"
+    className="mt-auto pt-3 pb-3  container"
     style={
       Object {
         "maxWidth": "720px",
@@ -21,6 +21,7 @@ exports[`renders  Calculator 1`] = `
       >
         <div
           className="switch float-right"
+          id="change-theme"
         >
           <h6>
             Change Theme
@@ -46,7 +47,7 @@ exports[`renders  Calculator 1`] = `
         className="col-12"
       >
         <div
-          className="mt-2 bg-transparent border-0 shadow-sm mb-1 display-history container"
+          className="mt-2 bg-transparent border-0 shadow-sm mb-1 display-history container-fluid"
         />
       </div>
     </div>
@@ -57,7 +58,7 @@ exports[`renders  Calculator 1`] = `
         className="col-12"
       >
         <input
-          className="mb-2  text-white bg-transparent border-0 shadow-sm mb-1 form-control"
+          className="mb-2  text-dark bg-transparent border-0 shadow-sm mb-1 form-control"
           defaultValue=""
           id="mathfn"
           readOnly={true}
@@ -85,8 +86,9 @@ exports[`renders  Calculator 1`] = `
               }
             >
               <button
-                className="shadow mb-1 pl-3 pr-3 text-white  rounded btn btn-outline-dark"
+                className="shadow mb-1 pl-3 pr-3 text-dark  rounded btn btn-outline-light"
                 disabled={false}
+                id="number-key-7"
                 onClick={[Function]}
                 type="button"
               >
@@ -102,8 +104,9 @@ exports[`renders  Calculator 1`] = `
               }
             >
               <button
-                className="shadow mb-1 pl-3 pr-3 text-white  rounded btn btn-outline-dark"
+                className="shadow mb-1 pl-3 pr-3 text-dark  rounded btn btn-outline-light"
                 disabled={false}
+                id="number-key-8"
                 onClick={[Function]}
                 type="button"
               >
@@ -119,8 +122,9 @@ exports[`renders  Calculator 1`] = `
               }
             >
               <button
-                className="shadow mb-1 pl-3 pr-3 text-white  rounded btn btn-outline-dark"
+                className="shadow mb-1 pl-3 pr-3 text-dark  rounded btn btn-outline-light"
                 disabled={false}
+                id="number-key-9"
                 onClick={[Function]}
                 type="button"
               >
@@ -136,8 +140,9 @@ exports[`renders  Calculator 1`] = `
               }
             >
               <button
-                className="shadow mb-1 pl-3 pr-3 text-white  rounded btn btn-outline-dark"
+                className="shadow mb-1 pl-3 pr-3 text-dark  rounded btn btn-outline-light"
                 disabled={false}
+                id="number-key-4"
                 onClick={[Function]}
                 type="button"
               >
@@ -153,8 +158,9 @@ exports[`renders  Calculator 1`] = `
               }
             >
               <button
-                className="shadow mb-1 pl-3 pr-3 text-white  rounded btn btn-outline-dark"
+                className="shadow mb-1 pl-3 pr-3 text-dark  rounded btn btn-outline-light"
                 disabled={false}
+                id="number-key-5"
                 onClick={[Function]}
                 type="button"
               >
@@ -170,8 +176,9 @@ exports[`renders  Calculator 1`] = `
               }
             >
               <button
-                className="shadow mb-1 pl-3 pr-3 text-white  rounded btn btn-outline-dark"
+                className="shadow mb-1 pl-3 pr-3 text-dark  rounded btn btn-outline-light"
                 disabled={false}
+                id="number-key-6"
                 onClick={[Function]}
                 type="button"
               >
@@ -187,8 +194,9 @@ exports[`renders  Calculator 1`] = `
               }
             >
               <button
-                className="shadow mb-1 pl-3 pr-3 text-white  rounded btn btn-outline-dark"
+                className="shadow mb-1 pl-3 pr-3 text-dark  rounded btn btn-outline-light"
                 disabled={false}
+                id="number-key-1"
                 onClick={[Function]}
                 type="button"
               >
@@ -204,8 +212,9 @@ exports[`renders  Calculator 1`] = `
               }
             >
               <button
-                className="shadow mb-1 pl-3 pr-3 text-white  rounded btn btn-outline-dark"
+                className="shadow mb-1 pl-3 pr-3 text-dark  rounded btn btn-outline-light"
                 disabled={false}
+                id="number-key-2"
                 onClick={[Function]}
                 type="button"
               >
@@ -221,8 +230,9 @@ exports[`renders  Calculator 1`] = `
               }
             >
               <button
-                className="shadow mb-1 pl-3 pr-3 text-white  rounded btn btn-outline-dark"
+                className="shadow mb-1 pl-3 pr-3 text-dark  rounded btn btn-outline-light"
                 disabled={false}
+                id="number-key-3"
                 onClick={[Function]}
                 type="button"
               >
@@ -238,8 +248,9 @@ exports[`renders  Calculator 1`] = `
               }
             >
               <button
-                className="shadow mb-1 pl-3 pr-3 text-white  rounded btn btn-outline-dark"
+                className="shadow mb-1 pl-3 pr-3 text-dark  rounded btn btn-outline-light"
                 disabled={false}
+                id="number-key-0"
                 onClick={[Function]}
                 type="button"
               >
@@ -255,8 +266,9 @@ exports[`renders  Calculator 1`] = `
               }
             >
               <button
-                className="shadow mb-1 pl-3 pr-3 text-white  rounded btn btn-outline-dark"
+                className="shadow mb-1 pl-3 pr-3 text-dark  rounded btn btn-outline-light"
                 disabled={false}
+                id="numID-10"
                 onClick={[Function]}
                 type="button"
               >
@@ -292,8 +304,9 @@ exports[`renders  Calculator 1`] = `
               }
             >
               <button
-                className="shadow pl-3 pr-3 text-white mb-1 rounded btn btn-outline-{theme.color} btn-block"
+                className="shadow pl-3 pr-3 text-dark mb-1 rounded btn btn-outline-{theme.color} btn-block"
                 disabled={false}
+                id="operation-key-divide"
                 onBlur={[Function]}
                 onClick={[Function]}
                 onFocus={[Function]}
@@ -314,8 +327,9 @@ exports[`renders  Calculator 1`] = `
               }
             >
               <button
-                className="shadow pl-3 pr-3 text-white mb-1 rounded btn btn-outline-{theme.color} btn-block"
+                className="shadow pl-3 pr-3 text-dark mb-1 rounded btn btn-outline-{theme.color} btn-block"
                 disabled={false}
+                id="operation-key-multiplication"
                 onBlur={[Function]}
                 onClick={[Function]}
                 onFocus={[Function]}
@@ -336,8 +350,9 @@ exports[`renders  Calculator 1`] = `
               }
             >
               <button
-                className="shadow pl-3 pr-3 text-white mb-1 rounded btn btn-outline-{theme.color} btn-block"
+                className="shadow pl-3 pr-3 text-dark mb-1 rounded btn btn-outline-{theme.color} btn-block"
                 disabled={false}
+                id="operation-key-minus"
                 onBlur={[Function]}
                 onClick={[Function]}
                 onFocus={[Function]}
@@ -358,8 +373,9 @@ exports[`renders  Calculator 1`] = `
               }
             >
               <button
-                className="shadow pl-3 pr-3 text-white mb-1 rounded btn btn-outline-{theme.color} btn-block"
+                className="shadow pl-3 pr-3 text-dark mb-1 rounded btn btn-outline-{theme.color} btn-block"
                 disabled={false}
+                id="operation-key-plus"
                 onBlur={[Function]}
                 onClick={[Function]}
                 onFocus={[Function]}
@@ -380,8 +396,9 @@ exports[`renders  Calculator 1`] = `
               }
             >
               <button
-                className="shadow pl-3 pr-3 text-white mb-1 rounded btn btn-outline-{theme.color} btn-block"
+                className="shadow pl-3 pr-3 text-dark mb-1 rounded btn btn-outline-{theme.color} btn-block"
                 disabled={false}
+                id="operation-key-openParenthesis"
                 onBlur={[Function]}
                 onClick={[Function]}
                 onFocus={[Function]}
@@ -402,8 +419,9 @@ exports[`renders  Calculator 1`] = `
               }
             >
               <button
-                className="shadow pl-3 pr-3 text-white mb-1 rounded btn btn-outline-{theme.color} btn-block"
+                className="shadow pl-3 pr-3 text-dark mb-1 rounded btn btn-outline-{theme.color} btn-block"
                 disabled={false}
+                id="operation-key-closeParenthesis"
                 onBlur={[Function]}
                 onClick={[Function]}
                 onFocus={[Function]}
@@ -424,8 +442,9 @@ exports[`renders  Calculator 1`] = `
               }
             >
               <button
-                className="shadow pl-3 pr-3 text-white mb-1 rounded btn btn-outline-{theme.color} btn-block"
+                className="shadow pl-3 pr-3 text-dark mb-1 rounded btn btn-outline-{theme.color} btn-block"
                 disabled={false}
+                id="operation-key-squared"
                 onBlur={[Function]}
                 onClick={[Function]}
                 onFocus={[Function]}
@@ -446,8 +465,9 @@ exports[`renders  Calculator 1`] = `
               }
             >
               <button
-                className="shadow pl-3 pr-3 text-white mb-1 rounded btn btn-outline-{theme.color} btn-block"
+                className="shadow pl-3 pr-3 text-dark mb-1 rounded btn btn-outline-{theme.color} btn-block"
                 disabled={false}
+                id="operation-key-squareRoot"
                 onBlur={[Function]}
                 onClick={[Function]}
                 onFocus={[Function]}
@@ -468,8 +488,9 @@ exports[`renders  Calculator 1`] = `
               }
             >
               <button
-                className="shadow pl-3 pr-3 text-white mb-1 rounded btn btn-outline-{theme.color} btn-block"
+                className="shadow pl-3 pr-3 text-dark mb-1 rounded btn btn-outline-{theme.color} btn-block"
                 disabled={false}
+                id="operation-key-undo"
                 onBlur={[Function]}
                 onClick={[Function]}
                 onFocus={[Function]}
@@ -490,8 +511,9 @@ exports[`renders  Calculator 1`] = `
               }
             >
               <button
-                className="shadow pl-3 pr-3 text-white mb-1 rounded btn btn-outline-{theme.color} btn-block"
+                className="shadow pl-3 pr-3 text-dark mb-1 rounded btn btn-outline-{theme.color} btn-block"
                 disabled={false}
+                id="operation-key-clearDisplay"
                 onBlur={[Function]}
                 onClick={[Function]}
                 onFocus={[Function]}
@@ -512,8 +534,9 @@ exports[`renders  Calculator 1`] = `
               }
             >
               <button
-                className="shadow pl-3 pr-3 text-white mb-1 rounded btn btn-primary btn-block"
+                className="shadow pl-3 pr-3 text-dark mb-1 rounded btn btn-primary btn-block"
                 disabled={false}
+                id="operation-key-result"
                 onBlur={[Function]}
                 onClick={[Function]}
                 onFocus={[Function]}

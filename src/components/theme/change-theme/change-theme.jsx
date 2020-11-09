@@ -7,6 +7,7 @@ function ChangeTheme() {
 
   return (
     <ButtonSwitch
+      id={`change-theme`}
       floatPosition="right"
       onClick={toggleTheme}
     >

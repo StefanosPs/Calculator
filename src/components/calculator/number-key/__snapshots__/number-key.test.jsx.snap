@@ -39,6 +39,7 @@ exports[`renders NumberKey when there are props 1`] = `
       <button
         className="shadow mb-1 pl-3 pr-3 text-white  rounded btn btn-outline-dark"
         disabled={false}
+        id="number-key-7"
         onClick={[Function]}
         type="button"
       >
@@ -56,6 +57,7 @@ exports[`renders NumberKey when there are props 1`] = `
       <button
         className="shadow mb-1 pl-3 pr-3 text-white  rounded btn btn-outline-dark"
         disabled={false}
+        id="number-key-8"
         onClick={[Function]}
         type="button"
       >
@@ -73,6 +75,7 @@ exports[`renders NumberKey when there are props 1`] = `
       <button
         className="shadow mb-1 pl-3 pr-3 text-white  rounded btn btn-outline-dark"
         disabled={false}
+        id="number-key-9"
         onClick={[Function]}
         type="button"
       >
@@ -90,6 +93,7 @@ exports[`renders NumberKey when there are props 1`] = `
       <button
         className="shadow mb-1 pl-3 pr-3 text-white  rounded btn btn-outline-dark"
         disabled={false}
+        id="number-key-4"
         onClick={[Function]}
         type="button"
       >
@@ -107,6 +111,7 @@ exports[`renders NumberKey when there are props 1`] = `
       <button
         className="shadow mb-1 pl-3 pr-3 text-white  rounded btn btn-outline-dark"
         disabled={false}
+        id="number-key-5"
         onClick={[Function]}
         type="button"
       >
@@ -124,6 +129,7 @@ exports[`renders NumberKey when there are props 1`] = `
       <button
         className="shadow mb-1 pl-3 pr-3 text-white  rounded btn btn-outline-dark"
         disabled={false}
+        id="number-key-6"
         onClick={[Function]}
         type="button"
       >
@@ -141,6 +147,7 @@ exports[`renders NumberKey when there are props 1`] = `
       <button
         className="shadow mb-1 pl-3 pr-3 text-white  rounded btn btn-outline-dark"
         disabled={false}
+        id="number-key-1"
         onClick={[Function]}
         type="button"
       >
@@ -158,6 +165,7 @@ exports[`renders NumberKey when there are props 1`] = `
       <button
         className="shadow mb-1 pl-3 pr-3 text-white  rounded btn btn-outline-dark"
         disabled={false}
+        id="number-key-2"
         onClick={[Function]}
         type="button"
       >
@@ -175,6 +183,7 @@ exports[`renders NumberKey when there are props 1`] = `
       <button
         className="shadow mb-1 pl-3 pr-3 text-white  rounded btn btn-outline-dark"
         disabled={false}
+        id="number-key-3"
         onClick={[Function]}
         type="button"
       >
@@ -192,6 +201,7 @@ exports[`renders NumberKey when there are props 1`] = `
       <button
         className="shadow mb-1 pl-3 pr-3 text-white  rounded btn btn-outline-dark"
         disabled={false}
+        id="number-key-0"
         onClick={[Function]}
         type="button"
       >
@@ -209,6 +219,7 @@ exports[`renders NumberKey when there are props 1`] = `
       <button
         className="shadow mb-1 pl-3 pr-3 text-white  rounded btn btn-outline-dark"
         disabled={false}
+        id="numID-10"
         onClick={[Function]}
         type="button"
       >
