@@ -36,6 +36,7 @@ const OperationKey = ({theme, onClick, mathOperationObj, ...otherProps}) => {
           overlay={<Tooltip id={`tooltip-${id}`}>{el.desc}</Tooltip>}
         >
           <Button
+            id={`operation-key-${id}`}
             onClick={() => onClick(id, el)}
             variant={el.variant}
             className={`shadow pl-3 pr-3 ${theme.text} mb-1 rounded`}

@@ -33,6 +33,7 @@ function NumberKey({theme, onClick, numbersKeysArray, ...otherProps }){
     const numStr = numbersKeysArray.map((variable, index) => {
         let button;
         if (variable || variable === 0) {
+          const id = (Number.isInteger(Number(variable)))? `number-key-${variable}` : `numID-${index}`
           button = (
             <Button
               onClick={() => {
@@ -40,6 +41,7 @@ function NumberKey({theme, onClick, numbersKeysArray, ...otherProps }){
               }}
               variant={`outline-${theme.color}`}
               className={`shadow mb-1 pl-3 pr-3 ${theme.text}  rounded`}
+              id={id} 
             >
               {variable}
             </Button>

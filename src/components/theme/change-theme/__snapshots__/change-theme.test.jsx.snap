@@ -3,6 +3,7 @@
 exports[`renders  ChangeTheme 1`] = `
 <div
   className="switch float-right"
+  id="change-theme"
 >
   <h6>
     Change Theme
