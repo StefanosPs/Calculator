@@ -2,7 +2,7 @@
 
 exports[`renders NumberKey when there are no props 1`] = `
 <div
-  className="mt-2 bg-transparent border-0 shadow-sm mb-1 display-history container"
+  className="mt-2 bg-transparent border-0 shadow-sm mb-1 display-history container-fluid"
 >
   
 </div>
@@ -10,6 +10,6 @@ exports[`renders NumberKey when there are no props 1`] = `
 
 exports[`renders NumberKey when there are props 1`] = `
 <div
-  className="mt-2 bg-transparent border-0 shadow-sm mb-1 display-history container"
+  className="mt-2 bg-transparent border-0 shadow-sm mb-1 display-history container-fluid"
 />
 `;
