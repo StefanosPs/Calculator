@@ -13,13 +13,31 @@ $ cp .env.sample .env
 
 ```sh
 # Runs the app in the development mode with electron.
-yarn start
+$ yarn start
 
 # Launches the test runner in the interactive watch mode.
-yarn test
+$ yarn test
 
 #Builds the app for production to the `build` folder.
-yarn build
+$ yarn build
+
+#Start electron Dev
+$ yarn react:start
+$ yarn electron:start
+#OR
+$ yarn react:start | yarn electron:start
+
+#Start electron Production
+yarn electron
+
+# Build electron
+yarn package
+
+## Build electron linux only
+yarn package-linux
+
+## Build electron windows only
+yarn package-win
 
 ```
 
